@@ -26,4 +26,11 @@ public class ReservationService {
                 .orElseThrow(() -> new RuntimeException("회의실을 찾을 수 없습니다."));
         room.reserveSeat();
     }
+
+    @Transactional
+    public void reserve(Long roomId) {
+        MeetingRoom room = meetingRoomRepository.findById(roomId)
+                .orElseThrow(() -> new RuntimeException("회의실을 찾을 수 없습니다."));
+        room.reserveSeat();
+    }
 }
